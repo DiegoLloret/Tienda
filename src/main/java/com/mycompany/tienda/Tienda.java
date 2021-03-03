@@ -175,12 +175,7 @@ private static Articulo buscarArticuloPorCodigo2(ArrayList<Articulo> c, String c
 			
 		}while(salircomprar !=0);
 		
-		//Pedimos articulo por codigo, lo buscamos
-		//    si existe Pedimos cantidad
-		//	  	si hay disponibilidad
-		//			Añadimos al carrito
-		//mostrar carrito 
-		//repetir mientras 
+		
 		
 	}
 	
