@@ -150,7 +150,7 @@ private static Articulo buscarArticuloPorCodigo2(ArrayList<Articulo> c, String c
 	private static void comprar(ArrayList<Articulo> c, Carrito carro, Scanner sc, Scanner sn) {
 		int salircomprar = -1;
 		do {
-			//Mostramos catalogo
+			
 			mostrarCatalogo(c);
 			System.out.println("Elige un articulo e introduce su codigo: ");
 			String codigo = sc.nextLine();
