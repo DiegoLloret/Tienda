@@ -63,7 +63,9 @@ public class Tienda {
 		c.add(new Articulo("0002", "Teclado", 10.00F, 100));
 		c.add(new Articulo("0003", "RJ45 2M", 4.50F, 50));
 		c.add(new Articulo("0004", "Raton", 20.00F, 15));
-                c.add(new Ropa("rojo",10,"0005","Jersey", 25.00F, 100));
+                c.add(new Ropa("rojo",TallaSML.L,"0005","Jersey", 25.00F, 100));
+                c.add(new Electrodomestico(Clasificacion_energetica.A,"Hogar","0006","Lavadora",526.98F,10));
+                c.add(new placas_cocina(construccion.encastrable,control.electronico,material.acero,Clasificacion_energetica.A,"hogar","0007","placa cocina",330.00F,45));
         }
 
 	private static void addArticuloCatalogo(ArrayList<Articulo> c, Scanner sc, Scanner sn) {
