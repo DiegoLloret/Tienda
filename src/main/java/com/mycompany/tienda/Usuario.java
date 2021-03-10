@@ -20,9 +20,9 @@ public class Usuario {
 public Usuario(){}
 
     public Usuario(String nombre, String password, String email) {
-        this.nombre = nombre;
-        this.password = password;
-        this.email = email;
+        ValidNom(nombre);
+        ValidPass(password);
+        ValidEm(email);
     }
 
     /**
@@ -66,19 +66,13 @@ public Usuario(){}
     public void setEmail(String email) {
         this.email = email;
     }
-    public void ContraSeg(String password){
-      int mayus=0;
-      int minus=0;
+    public void ValidPass(String password){
+      
        
        if(password.length()>7){
-        for (int i = 0; i <password.length(); i++) {
-            if(password.charAt(i)<=65 && password.charAt(i)>=90){
-                mayus++;}
-            else {
-                minus++;
-            }
-        }
-        if (mayus!=0 ||minus!=0){
+        
+            if(password.matches("[A-Z]+")==true){
+             
             setPassword(password);
         }
         else{
@@ -93,23 +87,29 @@ public Usuario(){}
   public void ValidEm(String email){
       int arroba=0;
       
-       for (int i = 0; i <email.length(); i++) {
-            if(email.charAt(i)==64 ){
-                arroba++;
-            }
+       if(email.matches("(?:[\\p{L}0-9!#$%\\&'*+/=?\\^_`{|}~-]+(?:\\.[\\p{L}0-9!#$%\\&'*+/=?\\^_`{|}" +
+    "~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\" +
+    "x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[\\p{L}0-9](?:[a-" +
+    "z0-9-]*[\\p{L}0-9])?\\.)+[\\p{L}0-9](?:[\\p{L}0-9-]*[\\p{L}0-9])?|\\[(?:(?:25[0-5" +
+    "]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-" +
+    "9][0-9]?|[\\p{L}0-9-]*[\\p{L}0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21" +
+    "-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])")==true){
+           setEmail(email);
        }
-            if(arroba!=0){
-                setEmail(email);
-            }
+       else{
+           String correo=email+"@gmail.com";
+           setEmail(correo);
+       }    
             
   }   
        public void ValidNom(String nombre){
         
-           if(nombre.length()<5){
+           if(nombre.matches("[6-15]0")==true){
                setNombre(nombre);
            }else{
                for (int i = nombre.length(); i < 6; i++) {
-                   
+                  String nombre1=nombre+"9";
+                  setNombre(nombre1);
                }
            }     
                
