@@ -24,6 +24,7 @@ public class Tienda {
 		
 		int opcion = -1;
 		
+                
 		ArrayList<Articulo> catalogo = new ArrayList<Articulo>();
 		inicializaCatalogo(catalogo);
 		

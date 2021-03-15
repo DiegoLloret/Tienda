@@ -12,7 +12,7 @@ import java.util.Scanner;
  * @author Alumno 3
  */
 public class Usuario {
-   Scanner sc = new Scanner(System.in);
+  private Scanner sc = new Scanner(System.in);
 
     private String nombre;
     private String password;
@@ -71,7 +71,7 @@ public Usuario(){}
        
        if(password.length()>7){
         
-            if(password.matches("[A-Z]+")==true){
+            if(password.matches("^(?=\\w*\\d)(?=\\w*[A-Z])(?=\\w*[a-z])\\S{8,16}$")==true){
              
             setPassword(password);
         }
@@ -103,12 +103,12 @@ public Usuario(){}
             
   }   
        public void ValidNom(String nombre){
-        
-           if(nombre.matches("[6-15]0")==true){
+        String nombre1=nombre;
+           if(nombre.matches("{6,12}$")==true){
                setNombre(nombre);
            }else{
                for (int i = nombre.length(); i < 6; i++) {
-                  String nombre1=nombre+"9";
+                   nombre1=nombre+"9";
                   setNombre(nombre1);
                }
            }     

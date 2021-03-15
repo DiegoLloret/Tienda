@@ -28,7 +28,11 @@ public class Opinion {
         voto_pos=0;
         voto_neg=0;
     }
-    
+    /**
+ *
+ * @param voto_pos
+ * incrementa voto_pos en 1
+ */
     public void VotoPos(int voto_pos){
         voto_pos++;
     }

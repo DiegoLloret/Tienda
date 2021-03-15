@@ -92,7 +92,7 @@ public class Articulo {
 		}
             return sb.toString();
         }
-       public float mediaOpi(){
+       public void mediaOpi(){
           int puntuacion=0;
        
            for (Opinion o: opiniones) {
@@ -100,6 +100,7 @@ public class Articulo {
               
            }
        }
-}
+
 }
 
+}
