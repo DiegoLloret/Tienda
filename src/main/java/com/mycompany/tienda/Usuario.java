@@ -116,5 +116,10 @@ public Usuario(){}
          
                   
        }   
+
+    @Override
+    public String toString() {
+        return "Usuario{" + "sc=" + sc + ", nombre=" + nombre + ", email=" + email + '}';
+    }
     
 }

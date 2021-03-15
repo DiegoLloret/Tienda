@@ -5,6 +5,8 @@
  */
 package com.mycompany.tienda;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Alumno 3
@@ -16,14 +18,18 @@ public class Articulo {
 	private String nombre;
 	private float precio;
 	private int stock;
+        private ArrayList<Opinion> opiniones;
 	
-	public Articulo() {};
+	public Articulo() {
+        opiniones=new ArrayList<Opinion>();
+        };
 	
 	public Articulo(String codigo,String nombre,float precio, int stock){
 		setCodigo(codigo);
 		setNombre(nombre);
 		setPrecio(precio);
 		setStock(stock);
+                opiniones=new ArrayList<Opinion>();
 	}
 	
 	public String getCodigo() {
@@ -76,5 +82,24 @@ public class Articulo {
 				return false;
 		}
 	}
+        public void AddOpinion(Opinion opinion){
+            opiniones.add(opinion);
+        }
+        public String showOpinions(){
+            StringBuilder sb= new StringBuilder();
+            for (Opinion o: opiniones) {
+			sb.append("\n").append(o);
+		}
+            return sb.toString();
+        }
+       public float mediaOpi(){
+          int puntuacion=0;
+       
+           for (Opinion o: opiniones) {
+           if(o.getPuntuacion()==punt.horrible){
+              
+           }
+       }
+}
 }
 
