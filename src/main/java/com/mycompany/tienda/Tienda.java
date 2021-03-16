@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author Alumno 3
+ * @author Alumno 3 1
  */
 public class Tienda {
   
