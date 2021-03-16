@@ -10,12 +10,15 @@ import java.util.Scanner;
 
 /**
  *
- * @author Alumno 3 1
+ * @author Alumno 3
  */
 public class Tienda {
   
 
 	/**
+	 * metodo principal que crea un catalog de articulos
+	 * ofrece un menú con 6 opciones, alta, compra, confirmacion
+	 * alta usuario,opinion articulo, visualizar opinion
 	 * @param args
 	 */
 	public static void main(String[] args) {
@@ -69,6 +72,11 @@ public class Tienda {
 
 	}
 	
+	
+	/**
+	 * este metodo crea un catalogo con 4 artículos
+	 * @param c
+	 */
 	private static void inicializaCatalogo(ArrayList<Articulo> c) {
 		c.add(new Electrodomestico(Clasificacion_energetica.A,"informatica","0001", "Monitor", 200.00F, 10) );
 		c.add(new Electrodomestico(Clasificacion_energetica.A,"informatica","0002", "Teclado", 10.00F, 100) );
@@ -79,6 +87,12 @@ public class Tienda {
                 c.add(new placas_cocina(construccion.encastrable,control.electronico,material.acero,Clasificacion_energetica.A,"hogar","0007","placa cocina",330.00F,45));
         }
 
+	/**
+	 * añade un articulo a catalogo con los datos introducidos por usuario
+	 * @param c
+	 * @param sc
+	 * @param sn
+	 */
 	private static void addArticuloCatalogo(ArrayList<Articulo> c, Scanner sc, Scanner sn) {
 		System.out.println("Introduce el codigo del nuevo articulo:");
 		String codigo = sc.nextLine();
@@ -91,11 +105,21 @@ public class Tienda {
 		c.add(new Articulo(codigo,nombre,precio,stock) {});
 	}
 	
+	/**
+	 * muestra todos los articulos de un catalogo
+	 * @param c
+	 */
 	private static void mostrarCatalogo(ArrayList<Articulo> c) {
 		for (Articulo a: c) {
 			System.out.println(a);
 		}
 	}
+	/**
+	 * metodo que dado un catalogo y un codigo devuelve el articulo con for avanzado
+	 * @param c
+	 * @param codigo
+	 * @return articulo si lo encuentra o null si no lo encuentra
+	 */
 	private static Articulo buscarArticuloPorCodigo1(ArrayList<Articulo> c, String codigo) {
 		
 		for(Articulo a:c) {
@@ -109,6 +133,12 @@ public class Tienda {
 		return null;
 		
 	}
+/**
+ *metodo que dado un catalogo y un codigo devuelve el articulo con for 
+	 * @param c
+	 * @param codigo
+	 * @return articulo si lo encuentra o null si no lo encuentra
+ */
 private static Articulo buscarArticuloPorCodigo2(ArrayList<Articulo> c, String codigo) {
 	int talla_catalogo = c.size();
 	
@@ -123,6 +153,12 @@ private static Articulo buscarArticuloPorCodigo2(ArrayList<Articulo> c, String c
 		return null;
 		
 	}
+/**
+ * metodo que dado un catalogo y un codigo devuelve el articulo con while
+ * @param c
+ * @param codigo
+ * @return articulo si lo encuentra o null si no lo encuentra
+ */
 	private static Articulo buscarArticuloPorCodigo(ArrayList<Articulo> c, String codigo) {
 		int talla_catalogo = c.size();
 		int i = 0;
@@ -143,6 +179,13 @@ private static Articulo buscarArticuloPorCodigo2(ArrayList<Articulo> c, String c
 		
 	}
 	
+	/**
+	 * metodo que dado un catalogo y un codigo devuelve la posicion del articulo en el catalogo
+	 * se recorre con un while
+	 * @param c
+	 * @param codigo
+	 * @return
+	 */
 	private static int buscarPosicionArticuloPorCodigo(ArrayList<Articulo> c, String codigo) {
 		int talla_catalogo = c.size();
 		int i = 0;
@@ -161,6 +204,14 @@ private static Articulo buscarArticuloPorCodigo2(ArrayList<Articulo> c, String c
 		
 	}
 
+	/**
+	 * metodo que se le pasa un catalogo y un carrito, y permite que se compre un
+	 * articulo por codigo, comprobando si hay stock suficiente
+	 * @param c
+	 * @param carro
+	 * @param sc
+	 * @param sn
+	 */
 	private static void comprar(ArrayList<Articulo> c, Carrito carro, Scanner sc, Scanner sn) {
 		int salircomprar = -1;
 		do {
@@ -193,6 +244,11 @@ private static Articulo buscarArticuloPorCodigo2(ArrayList<Articulo> c, String c
 		
 	}
 	
+	/**
+	 * metodo que pasado un catalogo y un carrito actualiza el stock del catalogo
+	 * @param c
+	 * @param carro
+	 */
 	private static void modificarStockCatalogo(ArrayList<Articulo> c, Carrito carro) {
 		int pos;
 		for(ArticuloCarrito ac: carro.pedido) {
@@ -203,6 +259,12 @@ private static Articulo buscarArticuloPorCodigo2(ArrayList<Articulo> c, String c
 	}
 	
 	
+	/**
+	 * metodo que confirma un carrito, permite seguir comprando
+	 * @param c
+	 * @param carro
+	 * @param sn
+	 */
 	private static void confirmarCarrito(ArrayList<Articulo> c, Carrito carro, Scanner sn) {
 		//Mostramos carrito articulos+cantidades+ el total y estado
 		System.out.println(carro.mostrarCarrito());
@@ -228,6 +290,15 @@ private static Articulo buscarArticuloPorCodigo2(ArrayList<Articulo> c, String c
 		//		Mostramos mensaje de despedida y salimos del programa
 		//Si no se confirma: Mostramos mensaje de que puede seguir comprando
 	}
+        /**
+         * metodo que permite dar opinion, busca el articulo por codigo
+         * y si lo encuentra crea una opinion, muestra el articulo y la 
+         * opinion
+         * @param us
+         * @param c
+         * @param sc
+         * @param sn
+         */
         private static void darOpinion(Usuario us, ArrayList<Articulo> c, Scanner sc, Scanner sn){
           mostrarCatalogo(c);
 			System.out.println("Elige un articulo e introduce su codigo: ");
@@ -245,6 +316,13 @@ private static Articulo buscarArticuloPorCodigo2(ArrayList<Articulo> c, String c
                         
                         
         }
+        /**
+         * metodo que permite crear opinion, dado un articulo lo puntua
+         * @param us
+         * @param a
+         * @param sn
+         * @param sc
+         */
         private static void crearOpinion(Usuario us, Articulo a ,Scanner sn, Scanner sc){
             System.out.println("Valora del 1 al 1 este articulo,1:horrible, 2:malo, 3:normal, 4:bueno, 5 :perfecto");
               int puntos1=sn.nextInt();  
@@ -266,4 +344,3 @@ private static Articulo buscarArticuloPorCodigo2(ArrayList<Articulo> c, String c
         }
         
 }
-
