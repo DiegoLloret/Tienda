@@ -28,6 +28,10 @@ public class Opinion {
         voto_pos=0;
         voto_neg=0;
     }
+
+    Opinion(Usuario us, punt puntos, String comment) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     /**
  *
  * @param voto_pos

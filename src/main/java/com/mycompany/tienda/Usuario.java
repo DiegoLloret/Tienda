@@ -103,9 +103,11 @@ public Usuario(){}
             
   }   
        public void ValidNom(String nombre){
+           
         String nombre1=nombre;
            if(nombre.matches("{6,12}$")==true){
                setNombre(nombre);
+               
            }else{
                for (int i = nombre.length(); i < 6; i++) {
                    nombre1=nombre+"9";

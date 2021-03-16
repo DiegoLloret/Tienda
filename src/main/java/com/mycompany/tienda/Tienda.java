@@ -23,7 +23,7 @@ public class Tienda {
 		Scanner cadenas = new Scanner(System.in);
 		
 		int opcion = -1;
-		
+		Usuario user = new Usuario();
                 
 		ArrayList<Articulo> catalogo = new ArrayList<Articulo>();
 		inicializaCatalogo(catalogo);
@@ -35,6 +35,10 @@ public class Tienda {
 			System.out.println("1. Alta Articulo");
 			System.out.println("2. Comprar");
 			System.out.println("3. Confirmar compra");
+                        System.out.println("4. Crear Usuario");
+                        System.out.println("5. Dar opinion de un articulo");
+                        System.out.println("6. Mostrar opiniones de un articulo");
+                        
 			System.out.println("0. Salir");
 			opcion = numeros.nextInt();
 			
@@ -48,6 +52,12 @@ public class Tienda {
 					break;
 				case 3:
 					break;
+                                case 4: 
+					break;
+                                case 5: darOpinion(user,catalogo,cadenas,numeros);
+					break;
+                                case 6:
+					break;
 				case 0:
 					System.out.println("Muchas gracias por su compra.");
 					break;
@@ -60,10 +70,10 @@ public class Tienda {
 	}
 	
 	private static void inicializaCatalogo(ArrayList<Articulo> c) {
-		c.add(new Articulo("0001", "Monitor", 200.00F, 10));
-		c.add(new Articulo("0002", "Teclado", 10.00F, 100));
-		c.add(new Articulo("0003", "RJ45 2M", 4.50F, 50));
-		c.add(new Articulo("0004", "Raton", 20.00F, 15));
+		c.add(new Electrodomestico(Clasificacion_energetica.A,"informatica","0001", "Monitor", 200.00F, 10) );
+		c.add(new Electrodomestico(Clasificacion_energetica.A,"informatica","0002", "Teclado", 10.00F, 100) );
+		c.add(new Electrodomestico(Clasificacion_energetica.A,"Informatica","0003", "RJ45 2M", 4.50F, 50) );
+		c.add(new Electrodomestico(Clasificacion_energetica.A,"Informatica","0004", "Raton", 20.00F, 15) );
                 c.add(new Ropa("rojo",TallaSML.L,"0005","Jersey", 25.00F, 100));
                 c.add(new Electrodomestico(Clasificacion_energetica.A,"Hogar","0006","Lavadora",526.98F,10));
                 c.add(new placas_cocina(construccion.encastrable,control.electronico,material.acero,Clasificacion_energetica.A,"hogar","0007","placa cocina",330.00F,45));
@@ -78,7 +88,7 @@ public class Tienda {
 		float precio = sn.nextFloat();
 		System.out.println("Introduce el stock del nuevo articulo:");
 		int stock = sn.nextInt();
-		c.add(new Articulo(codigo,nombre,precio,stock));
+		c.add(new Articulo(codigo,nombre,precio,stock) {});
 	}
 	
 	private static void mostrarCatalogo(ArrayList<Articulo> c) {
@@ -218,5 +228,42 @@ private static Articulo buscarArticuloPorCodigo2(ArrayList<Articulo> c, String c
 		//		Mostramos mensaje de despedida y salimos del programa
 		//Si no se confirma: Mostramos mensaje de que puede seguir comprando
 	}
+        private static void darOpinion(Usuario us, ArrayList<Articulo> c, Scanner sc, Scanner sn){
+          mostrarCatalogo(c);
+			System.out.println("Elige un articulo e introduce su codigo: ");
+			String codigo = sc.nextLine();
+			Articulo a = buscarArticuloPorCodigo(c, codigo);
+                        if (a != null) {
+                            crearOpinion(us,a,sc,sn);
+                            System.out.println(a);
+                             System.out.println(a.showOpinions());
+                            
+                        }
+                        else{
+					System.out.println("Articulo no disponible, elija otro");
+			}
+                        
+                        
+        }
+        private static void crearOpinion(Usuario us, Articulo a ,Scanner sn, Scanner sc){
+            System.out.println("Valora del 1 al 1 este articulo,1:horrible, 2:malo, 3:normal, 4:bueno, 5 :perfecto");
+              int puntos1=sn.nextInt();  
+              punt puntos=punt.perfecto;
+              if(puntos1==1)
+                  puntos=punt.horrible;
+              if(puntos1==2)
+                  puntos=punt.malo;
+              if(puntos1==3)
+                  puntos=punt.normal;
+              if(puntos1==4)
+                  puntos=punt.bueno;
+              if(puntos1==5)
+                  puntos=punt.perfecto;
+              
+              System.out.println("Escribe un comentario breve");
+              String comment= sc.nextLine();
+              a.AddOpinion(new Opinion (us, puntos,comment));
+        }
+        
 }
 
