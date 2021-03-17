@@ -9,7 +9,7 @@ package com.mycompany.tienda;
  *
  * @author Alumno 3
  */
-public class Opinion {
+public class Opinion implements Comparable<Opinion> {
     private Usuario usuario;
     private punt puntuacion;
     private int voto_pos;
@@ -124,4 +124,37 @@ public class Opinion {
     public void setComentario(String comentario) {
         this.comentario = comentario;
     }
+
+    @Override
+    public int compareTo(Opinion o) {
+        //horrible,malo,normal,bueno,perfecto
+      int num1=0;
+      int num=0;
+     if(this.puntuacion.equals(o.puntuacion))
+        return 0;
+     if(this.puntuacion.equals("horrible"))
+        num1=1;
+     if(this.puntuacion.equals("malo"))
+        num1=2;
+     if(this.puntuacion.equals("normal"))
+        num1=3;
+     if(this.puntuacion.equals("bueno"))
+        num1=4;
+     if(this.puntuacion.equals("perfecto"))
+        num1=5;
+      if(o.puntuacion.equals("horrible"))
+        num=1;
+     if(o.puntuacion.equals("malo"))
+        num=2;
+     if(o.puntuacion.equals("normal"))
+        num=3;
+     if(o.puntuacion.equals("bueno"))
+        num=4;
+     if(o.puntuacion.equals("perfecto"))
+        num=5;
+     if(num1>num)
+         return 1;
+     else
+         return -1;
+         } 
 }

@@ -11,17 +11,18 @@ package com.mycompany.tienda;
  * @author Alumno 3
  */
 public class Electrodomestico extends Articulo {
+
     private Clasificacion_energetica Clasificacion_energetica;
     private String gama;
 
-    public Electrodomestico() {}
+    public Electrodomestico() {
+    }
 
     public Electrodomestico(Clasificacion_energetica Clasificacion_energetica, String gama, String codigo, String nombre, float precio, int stock) {
         super(codigo, nombre, precio, stock);
         this.Clasificacion_energetica = Clasificacion_energetica;
         this.gama = gama;
     }
-  
 
     /**
      * @return the Clasificacion_energetica
@@ -50,9 +51,21 @@ public class Electrodomestico extends Articulo {
     public void setGama(String gama) {
         this.gama = gama;
     }
-     @Override
-    public String toString(){
-      return super.toString() + "Clasificacion energetica: " + this.Clasificacion_energetica + "\nGama: " +this.gama+ "\n" ;
+
+    @Override
+    public String toString() {
+        return super.toString() + "Clasificacion energetica: " + this.Clasificacion_energetica + "\nGama: " + this.gama + "\n";
     }
-    
+
+    @Override
+    public void applyPromo(String codigopromo) {
+        if (codigopromo.equals("SINIVA")) {
+            this.setPrecio(((float) this.getPrecio() * 0.79));
+
+            if (codigopromo.equals("ELECPROMO")) {
+                this.setPrecio(((float) this.getPrecio() * 0.9));
+
+            }
+        }
+    }
 }

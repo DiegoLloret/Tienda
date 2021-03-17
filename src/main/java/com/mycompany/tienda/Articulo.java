@@ -31,6 +31,13 @@ public abstract class Articulo {
 		setStock(stock);
                 opiniones=new ArrayList<Opinion>();
 	}
+        /**
+ * Metodo abstracto a implementar por clases hija.
+ * @param codigopromo 
+ */
+        public abstract void applyPromo(String codigopromo);
+            
+        
 	
 	public String getCodigo() {
 		return codigo;
