@@ -9,25 +9,28 @@ package com.mycompany.tienda;
  *
  * @author Alumno 3
  */
-public class Ropa extends Articulo {
+public final class Ropa extends Articulo implements Reciclable{
 
     String color;
     TallaSML talla;
+    int reciclada=0;
 
     public Ropa() {
     }
 
-    public Ropa(String color, TallaSML talla, String codigo, String nombre, float precio, int stock) {
+    public Ropa(String color, TallaSML talla,int reciclada, String codigo, String nombre, float precio, int stock) {
         super(codigo, nombre, precio, stock);
         this.color = color;
         this.talla = talla;
+        this.reciclada=reciclada;
+        
     }
 
     
 
     @Override
     public String toString() {
-        return super.toString() + "Color: " + this.color + "\nTalla: " + this.talla + "\n";
+        return super.toString() + "Color: " + this.color + "\nTalla: " + this.talla +"Reciclada:"+this.reciclada+ "\n";
     }
 
     @Override
@@ -39,4 +42,30 @@ public class Ropa extends Articulo {
 
         }
     }
+
+    @Override
+    public boolean esReciclable() {
+       
+        if(reciclada>0&&reciclada<=2)
+            return true;
+        else
+          return false;
+       
+    }
+        
+        
+
+    @Override
+    public void applyDiscount() {
+        if(this.esReciclable()==true)
+            this.setPrecio(((float) this.getPrecio() * 0.5));
+        
+    }
+        
+        
+
+   
+    
+        
+        
 }
