@@ -46,7 +46,7 @@ public final class Ropa extends Articulo implements Reciclable{
     @Override
     public boolean esReciclable() {
        
-        if(reciclada>0&&reciclada<=2)
+        if(this.reciclada<3&&0<=this.reciclada)
             return true;
         else
           return false;
