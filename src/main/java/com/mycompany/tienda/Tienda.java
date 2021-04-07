@@ -5,6 +5,11 @@
  */
 package com.mycompany.tienda;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -60,7 +65,9 @@ public class Tienda {
                 case 5:
                     darOpinion(user, catalogo, cadenas, numeros);
                     break;
-                case 6:
+                case 6:loadArticuloFromFile();
+                    break;
+                case 7://saveArticulosToFile();
                     break;
                 case 0:
                     System.out.println("Muchas gracias por su compra.");
@@ -370,5 +377,30 @@ public class Tienda {
         String comment = sc.nextLine();
         a.AddOpinion(new Opinion(us, puntos, comment));
     }
-
+public static void loadArticuloFromFile(){
+    File fichero=null;
+    FileReader lector=null;
+    BufferedReader buffer=null;
+    
+    try{
+        fichero=new File("articulo.txt");
+        lector= new FileReader(fichero);
+        buffer= new BufferedReader(lector);
+        String linea=null;
+        while((linea = buffer.readLine())!=null)
+        System.out.println(linea);
+    }catch(FileNotFoundException fnfe){
+        fnfe.printStackTrace();
+    }catch(IOException ioe){
+     ioe.printStackTrace();
+    }finally{
+        if(buffer!=null)
+            try{
+                buffer.close();
+            }catch(IOException ioe){
+                ioe.printStackTrace();
+            }
+        
+    }
+}
 }

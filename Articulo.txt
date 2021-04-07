@@ -1,0 +1,5 @@
+amarillo,S,0,0301,camiseta,15.50F,100
+verde,M,0,0302,pantalon,30.50F,150
+azul,L,0,0303,sudadera,40.50F,200
+rojo,XL,0,0304,abrigo,150.50F,250
+

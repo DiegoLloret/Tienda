@@ -55,14 +55,14 @@ public final class Ropa extends Articulo implements Reciclable{
         
         
 
-    @Override
+   @Override
     public void applyDiscount() {
         if(this.esReciclable()==true){
             /*System.out.println("valor reciclada"+this.reciclada);
             if(this.reciclada==1)*/
                 this.setPrecio(((float) this.getPrecio() * 0.5));
             /*else 
-                this.setPrecio(((float) this.getPrecio() * 0.5));*/
+                this.setPrecio(((float) this.getPrecio() * 0.5)*0.5);*/
         }
     }
         
