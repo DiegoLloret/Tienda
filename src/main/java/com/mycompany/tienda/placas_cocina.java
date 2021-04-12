@@ -67,6 +67,10 @@ public class placas_cocina extends Electrodomestico{
     public String toString(){
       return super.toString() + "Material: " + this.material + "\nControl: " +this.control+ "\nConstruccion :"+this.construccion+"\n" ;
     }
+    @Override
+    public String ToStringFile(){
+        return construccion+","+control+ ","+material+ ","+super.getClasificacion_energetica()+ ","+super.getGama()+ ","+super.getCodigo()+","+super.getNombre()+","+super.getPrecio()+","+super.getStock();
+    }
     
     
             

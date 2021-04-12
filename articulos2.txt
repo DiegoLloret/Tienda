@@ -1,0 +1,7 @@
+A,informatica,0001,Monitor,200.0,10
+A,informatica,0002,Teclado,10.0,100
+A,Informatica,0003,RJ45 2M,4.5,50
+A,Informatica,0004,Raton,20.0,15
+rojo,L,0,0005,Jersey,25.0,100
+A,Hogar,0006,Lavadora,526.98,10
+encastrable,electronico,acero,A,hogar,0007,placa cocina,330.0,45

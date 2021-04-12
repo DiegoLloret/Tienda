@@ -32,13 +32,15 @@ public final class Ropa extends Articulo implements Reciclable{
     public String toString() {
         return super.toString() + "Color: " + this.color + "\nTalla: " + this.talla +"Reciclada:"+this.reciclada+ "\n";
     }
+    
+    
 
     @Override
     public void applyPromo(String codigopromo) {
         //si el codigo promocial es ropapromo se aplica un 20% en el precio
 
         if (codigopromo.equals("ropapromo")) {
-            this.setPrecio(((float) this.getPrecio() * 0.8));
+            this.setPrecio(((float) this.getPrecio() * 0.8f));
 
         }
     }
@@ -60,12 +62,17 @@ public final class Ropa extends Articulo implements Reciclable{
         if(this.esReciclable()==true){
             /*System.out.println("valor reciclada"+this.reciclada);
             if(this.reciclada==1)*/
-                this.setPrecio(((float) this.getPrecio() * 0.5));
+                this.setPrecio(((float) this.getPrecio() * 0.5f));
             /*else 
                 this.setPrecio(((float) this.getPrecio() * 0.5)*0.5);*/
         }
     }
-        
+
+    @Override
+    public String ToStringFile() {
+return color+ ","+talla+ ","+reciclada+ ","+super.getCodigo()+","+super.getNombre()+","+super.getPrecio()+","+super.getStock();   
+    }
+   
         
 
    

@@ -89,6 +89,8 @@ public abstract class Articulo {
 				return false;
 		}
 	}
+        public abstract String ToStringFile();
+   
         public void AddOpinion(Opinion opinion){
             opiniones.add(opinion);
         }

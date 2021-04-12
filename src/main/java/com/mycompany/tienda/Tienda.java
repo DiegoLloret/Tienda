@@ -9,7 +9,9 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -67,7 +69,7 @@ public class Tienda {
                     break;
                 case 6:loadArticuloFromFile();
                     break;
-                case 7://saveArticulosToFile();
+                case 7:saveArticuloToFile(catalogo);
                     break;
                 case 0:
                     System.out.println("Muchas gracias por su compra.");
@@ -381,14 +383,19 @@ public static void loadArticuloFromFile(){
     File fichero=null;
     FileReader lector=null;
     BufferedReader buffer=null;
+   
     
     try{
         fichero=new File("articulo.txt");
         lector= new FileReader(fichero);
         buffer= new BufferedReader(lector);
         String linea=null;
+         String[] nuevaRopa;
         while((linea = buffer.readLine())!=null)
-        System.out.println(linea);
+            nuevaRopa=linea.split(",");
+       //to do cargar cada linea creando un objeto ropa
+        //nuevaRopa[];
+        
     }catch(FileNotFoundException fnfe){
         fnfe.printStackTrace();
     }catch(IOException ioe){
@@ -401,6 +408,30 @@ public static void loadArticuloFromFile(){
                 ioe.printStackTrace();
             }
         
+    }
+}
+public static void saveArticuloToFile(ArrayList<Articulo> catalogo){
+    FileWriter fichero = null;
+    PrintWriter escritor=null;
+    
+    try{
+        fichero =new FileWriter("articulos2.txt");
+        escritor =new PrintWriter(fichero);
+        for (Articulo articulo : catalogo) {
+          escritor.println(articulo.ToStringFile());   
+        }
+       
+        
+    }catch (IOException ioe){
+        ioe.printStackTrace();
+    }finally{
+        if(fichero!=null)
+            try{
+                fichero.close();
+            
+            }catch(IOException ioe){
+                ioe.printStackTrace();
+            }
     }
 }
 }

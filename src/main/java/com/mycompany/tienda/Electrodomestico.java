@@ -56,16 +56,21 @@ public class Electrodomestico extends Articulo {
     public String toString() {
         return super.toString() + "Clasificacion energetica: " + this.Clasificacion_energetica + "\nGama: " + this.gama + "\n";
     }
-
+    
     @Override
     public void applyPromo(String codigopromo) {
         if (codigopromo.equals("SINIVA")) {
-            this.setPrecio(((float) this.getPrecio() * 0.79));
+            this.setPrecio(((float) this.getPrecio() * 0.79f));
 
             if (codigopromo.equals("ELECPROMO")) {
-                this.setPrecio(((float) this.getPrecio() * 0.9));
+                this.setPrecio(((float) this.getPrecio() * 0.9f));
 
             }
         }
+    }
+
+    @Override
+    public String ToStringFile() {
+        return Clasificacion_energetica+ ","+gama+ ","+super.getCodigo()+","+super.getNombre()+","+super.getPrecio()+","+super.getStock();
     }
 }
